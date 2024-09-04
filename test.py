@@ -7,45 +7,33 @@ from tease.losses.mse import MeanSquaredError
 from tease.datasets.nonlinear import NonLinearData
 
 
-# np.random.seed(0)
-# X =     [[1, 2, 3, 2.5], 
-#          [2, 5, 1, 2], 
-#          [-1.5, 2.7, 3.3, -0.8]]
-
-# data = Spiral(100, 3)
-# X, y = data.load_data()
+np.random.seed(42)
+data = NonLinearData(8, 1)
+X, y = data.load_data()
 # data.show()
 
-data = NonLinearData(20)
-X, y = data.load_data()
-data.show()
-
-# print(X.shape)
-# print(y.shape)
-# print(X)
-# print(y)
+print(X.shape)
+print(y.shape)
 
 layer1 = Linear(1, 5)
-activation1 = Relu()
+relu = Relu()
 layer2 = Linear(5, 1)
-# activation2 = Softmax()
 loss = MeanSquaredError()
 
 layer1_out = layer1.forward(X)
-# print(layer1_out)
+relu_out = relu.forward(layer1_out)
+layer2_out = layer2.forward(relu_out)
 
-# print('\n\n Now this:\n\n')
-act1_out = activation1.forward(layer1_out)
-# print(act1_out)
+pred_loss = loss.forward(layer2_out, y)
 
-layer2_out = layer2.forward(act1_out)
-# act2_out = activation1.forward(layer2_out)
 
+print(X)
 print()
-# print(layer2_out)
-
-# soft_out = activation2.forward(act2_out)
+print(y)
+print()
 print(layer2_out)
+print()
+print(pred_loss)
+print()
 
 
-print(loss.forward(layer2_out, y))
