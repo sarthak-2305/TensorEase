@@ -8,6 +8,7 @@ from tease.models.sequential import Sequential
 # np.random.seed(0)
 data = NonLinearData(2000, 1)
 X, y = data.load_data()
+X_train, X_test, y_train, y_test = data.split_data()
 # data.show()
 
 # print(X)
@@ -34,14 +35,14 @@ model.add(Linear(32, 16))
 model.add(LeakyRelu())
 model.add(Linear(16, 1))
 
-model.train(X, y, 500)
+model.train(X_train, y_train, 500)
 model.result()
 
 # new_data = np.array([5])
 # answer = model.predict(new_data)
 # print("Prediction is: ", answer)
 
-predictions = model.predict(X)
+predictions = model.predict(X_test)
 
 
 plt.scatter(X, y, color='blue', alpha=0.6, label='True Data')
@@ -50,7 +51,7 @@ plt.xlabel("X")
 plt.ylabel("y")
 
 
-plt.scatter(X, predictions, color='red', label='Model Predictions')
+plt.scatter(X_test, predictions, color='red', label='Model Predictions')
 
 plt.legend()
 plt.show()
