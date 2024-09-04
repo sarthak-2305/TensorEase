@@ -37,3 +37,29 @@ print(pred_loss)
 print()
 
 
+d_grad_loss = loss.backward()
+d_layer2_out = layer2.backward(d_grad_loss)
+d_relu = relu.backward(d_layer2_out)
+d_layer1_out = layer1.backward(d_relu)
+
+print('d_layer_out')
+print(d_layer1_out)
+print()
+
+layer1.update_params(0.1)
+layer2.update_params(0.1)
+
+layer1_out = layer1.forward(X)
+relu_out = relu.forward(layer1_out)
+layer2_out = layer2.forward(relu_out)
+
+pred_loss = loss.forward(layer2_out, y)
+
+print(X)
+print()
+print(y)
+print()
+print(layer2_out)
+print()
+print(pred_loss)
+print()

@@ -9,3 +9,4 @@ class Relu:
         self.dinputs = dvalues.copy()
         self.dinputs[self.inputs <= 0] = 0 
     
+        return self.dinputs

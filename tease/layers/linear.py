@@ -8,14 +8,12 @@ import numpy as np
 class Linear:
     def __init__(self, input_dim, neurons):
         self.weights = np.random.randn(input_dim, neurons) * 0.1
-        self.bias = np.zeros((1, neurons))
+        self.biases = np.zeros((1, neurons))
 
-        self.dW = None
-        self.dW = None
 
     def forward(self, inputs):
         self.inputs = inputs
-        return np.dot(inputs, self.weights) + self.bias
+        return np.dot(inputs, self.weights) + self.biases
     
     def backward(self, dvalues):
         self.dweights = np.dot(self.inputs.T, dvalues)
@@ -23,3 +21,8 @@ class Linear:
 
         self.dinputs = np.dot(dvalues, self.weights.T)
 
+        return self.dinputs
+    
+    def update_params(self, alpha):
+        self.weights -= alpha * self.dweights
+        self.biases -= alpha * self.dbiases
