@@ -4,6 +4,7 @@ from tease.layers.linear import Linear
 from tease.activations.relu import Relu, LeakyRelu
 from tease.datasets.nonlinear import NonLinearData
 from tease.models.sequential import Sequential
+# from tease.activations.sigma import Sigmoid
 
 # np.random.seed(0)
 data = NonLinearData(2000, 1)
@@ -16,15 +17,6 @@ X_train, X_test, y_train, y_test = data.split_data()
 # print(y)
 # print()
 
-
-# model = Sequential()
-# model.add(Linear(1, 64))
-# model.add(Relu())
-# model.add(Linear(64, 32))
-# model.add(Relu())
-# model.add(Linear(32, 16))
-# model.add(Relu())
-# model.add(Linear(16, 1))
 
 model = Sequential()
 model.add(Linear(1, 64))
