@@ -14,8 +14,12 @@ class Linear:
         self.dW = None
 
     def forward(self, inputs):
+        self.inputs = inputs
         return np.dot(inputs, self.weights) + self.bias
     
-    def backward(self, d_out):
-        pass
+    def backward(self, dvalues):
+        self.dweights = np.dot(self.inputs.T, dvalues)
+        self.dbiases = np.sum(dvalues, axis=0, keepdims=True)
+
+        self.dinputs = np.dot(dvalues, self.weights.T)
 
