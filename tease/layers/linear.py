@@ -26,3 +26,6 @@ class Linear:
     def update_params(self, alpha):
         self.weights -= alpha * self.dweights
         self.biases -= alpha * self.dbiases
+
+    def is_layer(self):
+        return True

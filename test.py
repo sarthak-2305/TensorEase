@@ -120,3 +120,6 @@ print(layer2_out)
 print()
 print(pred_loss)
 print()
+
+
+
