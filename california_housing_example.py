@@ -9,7 +9,7 @@ from tease.models.sequential import Sequential
 from tease.layers.linear import Linear
 from tease.activations.relu import Relu
 
-np.random.seed(42)
+# np.random.seed(42)
 
 housing = fetch_california_housing()
 
@@ -35,7 +35,7 @@ model.add(Linear(30, 10))
 model.add(Relu())
 model.add(Linear(10, 1))
 
-history = model.train(X_train, y_train, 20, X_valid, y_valid)
+history = model.train(X_train, y_train, 100, X_valid, y_valid)
 
 predictions = model.predict(X_test)
 

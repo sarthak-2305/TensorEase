@@ -22,7 +22,7 @@ class Sequential:
     def optimizer(self):
         for layer in self.sequence:
             if layer.is_layer():
-                layer.update_params(0.1)
+                layer.update_params(0.01)
     
 
     def train(self, X, y, epochs, Xt=None, yt=None):
