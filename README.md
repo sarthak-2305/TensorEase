@@ -1,43 +1,59 @@
 # TensorEase
 
-**TensorEase** is a simple, lightweight deep learning library built from scratch to provide a foundational understanding of deep learning concepts. It’s designed to be an educational tool for learning how neural networks and backpropagation work at a low level, without relying on existing frameworks.
+TensorEase is a simple neural network library built from scratch using NumPy. It supports building and training custom deep learning models, including layers like linear (fully connected) and activation functions such as ReLU, LeakyReLU, and Sigmoid. TensorEase can be used to tackle both regression and classification tasks.
 
 ## Features
 
-- **Basic Layers**: Implementations of fundamental neural network layers, including:
-  - `Linear`: A fully connected linear layer.
+- Build custom neural networks using a `Sequential` model.
+- Support for common layers like `Linear`.
+- Various activation functions such as `ReLU` and `LeakyReLU`.
+- Custom loss functions like Mean Squared Error (MSE).
+- Gradient-based optimization through backpropagation.
+- Capability to train and test models on real-world datasets like California Housing.
   
-- **Activation Functions**: Essential activation functions such as:
-  - `ReLU`: Rectified Linear Unit.
+## Requirements
 
-- **Loss Functions**: Basic loss functions for training neural networks, including:
-  - `Mean Squared Error (MSE)`: Commonly used in regression tasks.
+- Python 3.x
+- NumPy
+- Pandas (optional, for handling datasets)
+- Scikit-learn (optional, for data preprocessing)
 
-- **Optimizers**: Simple gradient-based optimizers like:
-  - `Stochastic Gradient Descent (SGD)`: A straightforward optimizer for updating model parameters.
+## Installation
 
-## Purpose
+1. Create a virtual environment:
 
-TensorEase is intended for students and developers who want to:
-- Gain a deeper understanding of how deep learning frameworks operate under the hood.
-- Experiment with building and training neural networks from scratch.
-- Develop foundational knowledge before moving on to more complex frameworks like TensorFlow or PyTorch.
+   ```bash
+   python3 -m venv venv
 
-## Getting Started
+2. Activate the virtual environment (for macOS):
+  ```bash
+  source venv/bin/activate
 
-TensorEase is currently in development and is being expanded with more layers, activation functions, and optimizers. For now, it serves as a basic tool to experiment with simple neural network architectures, particularly for regression tasks.
+3. Install the required libraries:
+  pip install -r requirements.txt
 
-## Future Plans
+## Usage
 
-- **Additional Layers**: Expand the library with more types of layers, including convolutional layers and recurrent layers.
-- **Advanced Optimizers**: Implement more sophisticated optimization algorithms such as Adam and RMSprop.
-- **Dataset Integration**: Provide utilities for loading and preprocessing popular datasets like MNIST.
-- **Comprehensive Examples**: Add more example scripts demonstrating the use of TensorEase in various machine learning tasks.
+1. Load your dataset (synthetic or real-world) and preprocess it according to your task's requirements.
+2. Construct a neural network model using the `Sequential()` class and define your layers with components such as `Linear` layers and activation functions like `ReLU`.
+3. Train your model using the `.train()` method by specifying your training data and number of epochs.
+4. Evaluate the model's performance using the `.predict()` method, comparing against your validation or test dataset.
+5. Use built-in plotting methods or libraries like `matplotlib` to visualize model predictions versus actual values.
 
-## Contribution
+## Example Workflow
 
-TensorEase is a personal educational project, and contributions are welcome! Feel free to fork the repository, make improvements, and submit pull requests.
+1. Load and preprocess your dataset (e.g., scaling features, splitting into training and test sets).
+2. Define the model architecture:
+   - Add layers, starting with an input layer that matches your dataset's features.
+   - Include hidden layers with activation functions like ReLU or LeakyReLU.
+   - End with an output layer suited for your regression or classification task.
+3. Train the model using your training dataset.
+4. Evaluate the performance with metrics such as Mean Squared Error (MSE) for regression tasks or accuracy for classification.
+5. Visualize predictions versus actual results to assess model accuracy and performance.
 
-## License
+## Roadmap
 
-This project is licensed under the MIT License.
+- Implement advanced optimizers (e.g., Adam, RMSprop).
+- Add more activation functions and regularization techniques like dropout.
+- Support for various data augmentation and preprocessing utilities.
+- Introduce user-friendly APIs for model evaluation and visualization.
