@@ -25,20 +25,34 @@ class Sequential:
                 layer.update_params(0.1)
     
 
-    def train(self, X, y, epochs):
-        self.pred_loss = None
+    def train(self, X, y, epochs, Xt=None, yt=None):
+        # self.pred_loss = None
         self.forward_outputs = None
         loss = MeanSquaredError()
+
+        history = {'loss': [], 'val_loss': []}
         for i in range(epochs):
-            print("epoch number", i)
+            print("epoch number", i + 1)
+            # print("loss:", self.pred_loss)
+            print()
             # print(self.forward_outputs)
             self.forward_outputs = self.forward_pass(X)
 
-            self.pred_loss = loss.forward(self.forward_outputs, y)
+            pred_loss = loss.forward(self.forward_outputs, y)
+            history['loss'].append(pred_loss)
+
             loss_grad = loss.backward()
 
             self.backwards_pass(loss_grad)
             self.optimizer()
+
+            if Xt is not None and yt is not None:
+                self.forward_outputs_valid = self.forward_pass(Xt)
+                val_loss = loss.forward(self.forward_outputs_valid, yt)
+                history['val_loss'].append(val_loss)
+
+
+        return history
             
     
     def result(self):

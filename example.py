@@ -7,7 +7,7 @@ from tease.models.sequential import Sequential
 # from tease.activations.sigma import Sigmoid
 
 # np.random.seed(0)
-data = NonLinearData(500, 1)
+data = NonLinearData(1000, 1)
 X, y = data.load_data()
 X_train, X_test, y_train, y_test = data.split_data()
 # data.show()
@@ -19,13 +19,13 @@ X_train, X_test, y_train, y_test = data.split_data()
 
 
 model = Sequential()
-model.add(Linear(1, 64))
+model.add(Linear(1, 32))
 model.add(LeakyRelu())
-model.add(Linear(64, 32))
+model.add(Linear(32, 32))
 model.add(LeakyRelu())
-model.add(Linear(32, 16))
-model.add(LeakyRelu())
-model.add(Linear(16, 1))
+# model.add(Linear(32, 16))
+# model.add(LeakyRelu())
+model.add(Linear(32, 1))
 
 model.train(X_train, y_train, 500)
 model.result()
