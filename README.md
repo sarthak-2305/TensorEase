@@ -26,11 +26,12 @@ TensorEase is a simple neural network library built from scratch using NumPy. It
    python3 -m venv venv
 
 2. Activate the virtual environment (for macOS):
-  ```bash
-  source venv/bin/activate
+   ```bash
+   source venv/bin/activate
 
 3. Install the required libraries:
-  pip install -r requirements.txt
+   ```bash
+   pip install -r requirements.txt
 
 ## Usage
 
