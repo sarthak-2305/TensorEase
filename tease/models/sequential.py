@@ -57,7 +57,7 @@ class Sequential:
     
     def result(self):
         print("The final outputs are:\n", self.forward_outputs)
-        print("The final prediction loss is:\n", self.pred_loss)
+        # print("The final prediction loss is:\n", self.pred_loss)
         
 
     def predict(self, values):
